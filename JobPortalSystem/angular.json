@@ -34,7 +34,9 @@
             ],
             "scripts": [
               "src/assets/js/vendor/jquery-1.12.4.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "src/assets/js/slick.min.js",
+              "src/assets/js/owl.carousel.min.js"
 
             ]
           },
