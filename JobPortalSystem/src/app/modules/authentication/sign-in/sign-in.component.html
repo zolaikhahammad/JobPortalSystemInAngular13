@@ -1,0 +1,17 @@
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
+                <img class="img-responsive" alt="logo" src="/assets/img/logo.png">
+                <input type="text" class="form-control input-lg" placeholder="User Name" formControlName="username">
+                <span class="error-msg mt-2" *ngIf="this.loginForm.get('username').invalid && this.loginForm.get('username').touched" >email address is required</span>
+                <input type="password" class="form-control input-lg" placeholder="Password" formControlName="password">
+                <span class="error-msg mt-2"  *ngIf="this.loginForm.get('password').invalid && this.loginForm.get('password').touched">Passsword is required</span>
+                <label><a href="">Forget Password?</a></label>
+                <button type="submit" class="btn btn-primary" [disabled]="this.loginForm.invalid">Login</button>
+                <p>Have't Any Account <a routerLink="/signup">Create An Account</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+

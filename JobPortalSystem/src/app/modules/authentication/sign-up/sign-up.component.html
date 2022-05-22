@@ -1,0 +1,16 @@
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <form #signUpForm="ngForm" (ngSubmit)="GetFormValues(signUpForm.value)" >
+                <img class="img-responsive" alt="logo" src="/assets/img/logo.png">
+                <input type="text" name="FirstName" class="form-control input-lg" ngModel placeholder="First Name">
+                <input type="text" name="LastName" class="form-control input-lg" ngModel placeholder="Last Name">
+                <input type="text" name="Email" class="form-control input-lg" ngModel placeholder="Email">
+                <input type="password" name="Password" class="form-control input-lg" ngModel placeholder="Password">
+                <input type="radio" name="isEmployer"  (change)="checkCheckBoxvalue('employer')" #employer/><label>Company</label>
+                <input type="radio" name="isEmployer"(change)="checkCheckBoxvalue('candidate')" #candidate/><label>Candidate</label>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+    </div>
+</section>

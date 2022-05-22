@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "JobPortalSystem": {
+    "JobPortalSytemV2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/job-portal-system",
+            "outputPath": "dist/job-portal-sytem-v2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,16 +28,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/style.css",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/plugins.css",
+              "src/assets/css/common.css",
+              "src/assets/css/main.css"
 
             ],
             "scripts": [
-              "src/assets/js/vendor/jquery-1.12.4.min.js",
-              "src/assets/js/main.js",
-              "src/assets/js/slick.min.js",
-              "src/assets/js/owl.carousel.min.js"
-
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/bootsnav.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
@@ -77,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "JobPortalSystem:build:production"
+              "browserTarget": "JobPortalSytemV2:build:production"
             },
             "development": {
-              "browserTarget": "JobPortalSystem:build:development"
+              "browserTarget": "JobPortalSytemV2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "JobPortalSystem:build"
+            "browserTarget": "JobPortalSytemV2:build"
           }
         },
         "test": {
@@ -111,5 +112,5 @@
       }
     }
   },
-  "defaultProject": "JobPortalSystem"
+  "defaultProject": "JobPortalSytemV2"
 }
