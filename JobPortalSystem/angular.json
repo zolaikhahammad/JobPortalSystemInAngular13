@@ -30,7 +30,8 @@
               "src/styles.css",
               "src/assets/css/plugins.css",
               "src/assets/css/common.css",
-              "src/assets/css/main.css"
+              "src/assets/css/main.css",
+              "node_modules/ngx-toastr/toastr.css"
 
             ],
             "scripts": [

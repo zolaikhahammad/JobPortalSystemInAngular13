@@ -3,13 +3,39 @@
         <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
             <form #signUpForm="ngForm" (ngSubmit)="GetFormValues(signUpForm.value)" >
                 <img class="img-responsive" alt="logo" src="/assets/img/logo.png">
-                <input type="text" name="FirstName" class="form-control input-lg" ngModel placeholder="First Name">
-                <input type="text" name="LastName" class="form-control input-lg" ngModel placeholder="Last Name">
-                <input type="text" name="Email" class="form-control input-lg" ngModel placeholder="Email">
-                <input type="password" name="Password" class="form-control input-lg" ngModel placeholder="Password">
-                <input type="radio" name="isEmployer"  (change)="checkCheckBoxvalue('employer')" #employer/><label>Company</label>
-                <input type="radio" name="isEmployer"(change)="checkCheckBoxvalue('candidate')" #candidate/><label>Candidate</label>
-                <button type="submit" class="btn btn-primary">Create Account</button>
+                <input type="text" name="FirstName" minlength="4"  appForbiddenName="bob" class="form-control input-lg"  #firstName="ngModel" ngModel placeholder="First Name" required="">
+                <span class="error-msg" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <div *ngIf="firstName.errors?.['required']">
+                        FirstName is required.
+                      </div>
+                      <div *ngIf="firstName.errors?.['minlength']">
+                        Name must be at least 4 characters long.
+                      </div>
+                      <div *ngIf="firstName.errors?.['forbiddenName']">
+                        Name cannot be Bob.
+                      </div>
+                    
+                </span>
+                <input type="text" name="LastName" #lastName="ngModel"   class="form-control input-lg" ngModel placeholder="Last Name" required="">
+                <span class="error-msg" *ngIf="lastName.invalid && lastName.touched">
+                <div *ngIf="lastName.errors?.['required']">Last Name is required</div>
+                </span>
+                <input type="email" name="Email"  #email="ngModel" class="form-control input-lg" ngModel placeholder="Email" required>
+                <span class="error-msg" *ngIf="email.invalid && email.touched">
+                    <div *ngIf="email.errors?.['required']">Email is required</div>
+                    <div *ngIf="email.errors?.['type']">Please enter valid email</div>
+                    </span>
+                <input type="password" #password="ngModel" minlength="6" name="Password" class="form-control input-lg" ngModel placeholder="Password" required="">
+                <span class="error-msg" *ngIf="password.invalid && password.touched">
+                    <div *ngIf="password.errors?.['required']">Password is required</div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        Name must be at least 6 characters long.
+                      </div>
+                    </span>
+                <input type="radio" name="isEmployer" ngModel (change)="checkCheckBoxvalue('employer')" #employer="ngModel"/><label>Company</label>
+                <input type="radio" name="isCandidate" ngModel (change)="checkCheckBoxvalue('candidate')" #candidate="ngModel"/><label>Candidate</label>
+               
+                <button type="submit" class="btn btn-primary" [disabled]="this.signUpForm.invalid">Create Account</button>
             </form>
         </div>
     </div>

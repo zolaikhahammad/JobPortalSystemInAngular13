@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UrlConstants } from 'src/app/shared/constants/UrlConstants';
 import { HttpgeneralService } from 'src/app/shared/httpgeneral.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import {ViewChild, ElementRef } from '@angular/core';
+import { ToastService } from 'src/app/shared/services/toast.service'; 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,15 +12,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 
 export class SignUpComponent implements OnInit {
+
   isemployer: boolean;
   iscandidate: boolean;
-  constructor(private httpService: HttpgeneralService) {
+  constructor(private httpService: HttpgeneralService,public toasterService:ToastService) {
     this.isemployer = true;
     this.iscandidate = false;
   }
 
   ngOnInit(): void {
   }
+  
 
   GetFormValues(user: any) {
     this.SaveUser(user);
@@ -45,8 +49,10 @@ export class SignUpComponent implements OnInit {
     }
     this.httpService.post(UrlConstants.signup, JSON.stringify(postBody)).subscribe({
       next: data => {
+        this.toasterService.showSuccess("User registration is successfull","Success");
       },
       error: error => {
+        this.toasterService.showError(error,"Error");
       }
     });
   }

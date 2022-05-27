@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './modules/layout/layout.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
@@ -16,6 +17,7 @@ import { ErrorInterceptor } from './shared/helpers/error.interceptor';
   declarations: [
     AppComponent,
     HomeComponent
+    
 
   ],
   imports: [
@@ -25,7 +27,9 @@ import { ErrorInterceptor } from './shared/helpers/error.interceptor';
     AuthenticationModule,
     FormsModule,
     HttpClientModule,
-    EmployerModule
+    EmployerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers:
     [HttpgeneralService,
