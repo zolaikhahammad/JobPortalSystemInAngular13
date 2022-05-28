@@ -21,7 +21,10 @@ import { ToastrModule ,ToastContainerModule} from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({ positionClass: 'inline' }),
+    ToastrModule.forRoot({ 
+    timeOut: 10000,
+    positionClass: 'toast-bottom-left',
+    preventDuplicates: true, }),
     ToastContainerModule,
   ]
 })
