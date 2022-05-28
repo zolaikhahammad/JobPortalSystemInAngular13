@@ -13,6 +13,8 @@ import { HttpgeneralService } from './shared/httpgeneral.service';
 import { EmployerModule } from './modules/employer/employer.module';
 import { BasicAuthInterceptor } from './shared/helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './shared/helpers/error.interceptor';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { ErrorInterceptor } from './shared/helpers/error.interceptor';
     HttpClientModule,
     EmployerModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgHttpLoaderModule.forRoot(),
   ],
   providers:
     [HttpgeneralService,
