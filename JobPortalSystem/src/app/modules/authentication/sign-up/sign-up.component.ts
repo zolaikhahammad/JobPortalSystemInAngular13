@@ -28,15 +28,6 @@ export class SignUpComponent implements OnInit {
     this.SaveUser(user);
   }
 
-  checkCheckBoxvalue(event: any) {
-    if (event === "candidate"){
-      this.isemployer = false;
-      this.iscandidate=true;
-    }
-    else  
-      this.iscandidate=false;
-      this.isemployer=true;
-  }
   SaveUser(user: any) {
     debugger;
     const postBody = {
@@ -46,6 +37,14 @@ export class SignUpComponent implements OnInit {
       Password: user.Password,
       isEmployer:this.isemployer,
       isCandidate:this.iscandidate
+    }
+    if(user.isEmployer=="employer"){
+      postBody.isEmployer=true;
+      postBody.isCandidate=false;
+    }
+    else {
+      postBody.isEmployer=false;
+      postBody.isCandidate=true;
     }
     this.httpService.post(UrlConstants.signup, JSON.stringify(postBody)).subscribe({
       next: data => {
