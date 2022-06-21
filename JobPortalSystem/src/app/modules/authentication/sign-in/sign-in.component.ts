@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UrlConstants } from 'src/app/shared/constants/UrlConstants';
 import { HttpgeneralService } from 'src/app/shared/httpgeneral.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { ValidatePasswordStrength } from 'src/app/shared/validator/CustomValidators';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,7 +25,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required,ValidatePasswordStrength()])
 
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

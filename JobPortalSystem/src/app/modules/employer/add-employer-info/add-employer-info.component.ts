@@ -7,7 +7,8 @@ import { HttpgeneralService } from 'src/app/shared/httpgeneral.service';
 import { EmployeeStrength } from 'src/app/shared/model/EmployeeStrengthModel';
 import { Industries } from 'src/app/shared/model/IndustryModel';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
-
+import { ToastService } from 'src/app/shared/services/toast.service';
+import {NgbDatepicker, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-add-employer-info',
   templateUrl: './add-employer-info.component.html',
@@ -20,7 +21,9 @@ export class AddEmployerInfoComponent implements OnInit {
   empInfoForm: any;
   userInfo: any;
   constructor(private httpservice: HttpgeneralService,
-    private tokenStorageService: TokenStorageService) {
+    private tokenStorageService: TokenStorageService,
+    public toasterService:ToastService,
+    private calendar: NgbCalendar) {
 
 
   }
@@ -29,18 +32,18 @@ export class AddEmployerInfoComponent implements OnInit {
     debugger;
     this.userInfo = this.tokenStorageService.getUser();
     this.empInfoForm = new FormGroup({
-      companyName: new FormControl(""),
+      companyName: new FormControl("",[Validators.required]),
       userId: new FormControl(this.userInfo.userId),
-      groupOfCompanies: new FormControl(),
+      groupOfCompanies: new FormControl("",[Validators.required]),
       companyWebsite: new FormControl(),
-      ceoName: new FormControl(),
+      ceoName: new FormControl("",[Validators.required]),
       ceoCnic: new FormControl(),
-      cnicIssuanceDate: new FormControl(),
-      industryId: new FormControl(),
-      companyAddress: new FormControl(),
-      phoneNumber: new FormControl(),
-      employeeStrenghtId: new FormControl(),
-      companyDescription: new FormControl(),
+      cnicIssuanceDate: new FormControl(new Date(),[Validators.required]),
+      industryId: new FormControl("",[Validators.required]),
+      companyAddress: new FormControl("",[Validators.required]),
+      phoneNumber: new FormControl("",[Validators.required]),
+      employeeStrenghtId: new FormControl("",[Validators.required]),
+      companyDescription: new FormControl("",[Validators.required]),
       companyLogoUrl: new FormControl(),
       isAddressPublic: new FormControl(true, Validators.required)
 
@@ -52,12 +55,10 @@ export class AddEmployerInfoComponent implements OnInit {
     console.log(this.empInfoForm.value);
     this.httpservice.post(UrlConstants.save_emp_info, JSON.stringify(this.empInfoForm.value)).subscribe({
       next: data => {
-        debugger;
-        alert("employer information saved");
-
+        this.toasterService.showSuccess("employer information saved","Success");
       },
       error: error => {
-
+        this.toasterService.showError(error,"Error");
       }
 
     });

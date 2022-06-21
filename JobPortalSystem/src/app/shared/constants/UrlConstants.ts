@@ -6,7 +6,10 @@ export class UrlConstants {
     static readonly user_key: string = "auth-user";
     static readonly user_role: string = "auth-user-role";
 
+
     static readonly get_industries = "api/v1/company/industry";
     static readonly get_emp_strength = "api/v1/company/empstrength";
     static readonly save_emp_info = "api/v1/company/register";
+
+    static readonly signedup: string = "api/v1/user/signedup";
 }

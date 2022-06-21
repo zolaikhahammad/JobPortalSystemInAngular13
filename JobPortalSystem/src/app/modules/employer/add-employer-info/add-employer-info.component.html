@@ -4,47 +4,64 @@
             <input type="hidden" formControlName="userId">
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="inputEmail4">Company Name</label>
+                    <label for="inputEmail4">Company Name <span class="error-msg">*</span></label> 
                     <input type="text" class="form-control" id="inputEmail4" placeholder=""
                         formControlName="companyName">
+                        <!-- <div class="example-container">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Company Name</mat-label>
+                              <input matInput placeholder="pat@example.com" formControlName="companyName" required>
+                              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> 
+                            </mat-form-field> 
+                          </div>-->
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">Group f Companies</label>
+                    <label for="inputPassword4">Group of Companies <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
                         formControlName="groupOfCompanies">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">Website</label>
+                    <label for="inputPassword4">Website </label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
                         formControlName="companyWebsite">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="inputEmail4">CEO Name</label>
+                    <label for="inputEmail4">CEO Name <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputEmail4" placeholder="" formControlName="ceoName">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">CEO CNIC</label>
+                    <label for="inputPassword4">CEO CNIC <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
-                        formControlName="ceoCnic">
+                        formControlName="ceoCnic" maxlength="13" pattern="^[0-9]{5}-[0-9]{7}-[0-9]$">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">CNIC Issuance Date</label>
-                    <input type="date" class="form-control" id="inputPassword4" placeholder=""
-                        formControlName="cnicIssuanceDate">
+                    <label for="inputPassword4">CNIC Issuance Date <span class="error-msg">*</span></label>
+                    <input class="form-control"  #cnicIssuanceDate="ngbDatepicker" placeholder="yyyy-mm-dd"  formControlName="cnicIssuanceDate" ngbDatepicker >
+             <button class="btn btn-outline-secondary calendar" (click)="this.cnicIssuanceDate.toggle()" type="button"></button>
+                    <!-- <label for="inputPassword4">CNIC Issuance Date <span class="error-msg">*</span></label>
+                    <ngb-datepicker formControlName="cnicIssuanceDate" (navigate)="date" class="form-control"></ngb-datepicker> -->
+
+                     <!-- <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>CNIC Issuance Date</mat-label>
+                        <input matInput  [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>  -->
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="inputEmail4">Industry</label>
                     <select class="form-control" formControlName="industryId">
-                        <option value="">Select Industry</option>
+                        <option value="">Select Industry <span class="error-msg">*</span></option>
                         <option *ngFor="let v of industries;" [value]="v.industryId">{{v.industryName}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">Address</label>
+                    <label for="inputPassword4">Address <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
                         formControlName="companyAddress">
                 </div>
@@ -60,13 +77,13 @@
                 <div class="form-group col-md-4">
                     <label for="">Employee Strength</label>
                     <select class="form-control" formControlName="employeeStrenghtId">
-                        <option value="">Select Employee Strength</option>
+                        <option value="">Select Employee Strength <span class="error-msg">*</span></option>
                         <option *ngFor="let emp of employeeStrength;" [value]="emp.employeeStrenghtId">
                             {{emp.employeeStrenghtName}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPassword4">Phone Number</label>
+                    <label for="inputPassword4">Phone Number <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
                         formControlName="phoneNumber">
                 </div>
@@ -78,13 +95,13 @@
             <div class="row">
 
                 <div class="form-group col-md-12">
-                    <label for="inputPassword4">Description</label>
+                    <label for="inputPassword4">Description <span class="error-msg">*</span></label>
                     <textarea class="form-control" id="inputPassword4" placeholder=""
                         formControlName="companyDescription"></textarea>
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-primary" style="float: right;">Sign in</button>
+            <button type="submit" class="btn btn-primary" [disabled]="this.empInfoForm.invalid" style="float: right;">Save</button>
         </form>
     </div>
 </section>

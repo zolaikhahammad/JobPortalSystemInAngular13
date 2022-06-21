@@ -32,9 +32,18 @@
                         Name must be at least 6 characters long.
                       </div>
                     </span>
-                <input type="radio" name="isEmployer" ngModel (change)="checkCheckBoxvalue('employer')" #employer="ngModel"/><label>Company</label>
-                <input type="radio" name="isCandidate" ngModel (change)="checkCheckBoxvalue('candidate')" #candidate="ngModel"/><label>Candidate</label>
+                             
+                    <div class="form-control">
+                      <label class="radio-inline">
+                        <input type="radio"  name="isEmployer" #myRadio="ngModel" ngModel  value="employer" />Company
                
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="isEmployer" #myRadio="ngModel" ngModel [checked]="" value="candidate"/>Candidate
+  
+                      </label>
+                    </div>
+                 
                 <button type="submit" class="btn btn-primary" [disabled]="this.signUpForm.invalid">Create Account</button>
             </form>
         </div>

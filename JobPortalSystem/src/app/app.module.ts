@@ -14,6 +14,7 @@ import { EmployerModule } from './modules/employer/employer.module';
 import { BasicAuthInterceptor } from './shared/helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './shared/helpers/error.interceptor';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
