@@ -8,7 +8,7 @@ import { EmployeeStrength } from 'src/app/shared/model/EmployeeStrengthModel';
 import { Industries } from 'src/app/shared/model/IndustryModel';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
-
+import {NgbDatepicker, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-add-employer-info',
   templateUrl: './add-employer-info.component.html',
@@ -22,7 +22,8 @@ export class AddEmployerInfoComponent implements OnInit {
   userInfo: any;
   constructor(private httpservice: HttpgeneralService,
     private tokenStorageService: TokenStorageService,
-    public toasterService:ToastService) {
+    public toasterService:ToastService,
+    private calendar: NgbCalendar) {
 
 
   }

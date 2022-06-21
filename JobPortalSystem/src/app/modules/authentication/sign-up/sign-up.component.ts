@@ -12,12 +12,8 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 
 
 export class SignUpComponent implements OnInit {
-
-  isemployer: boolean;
-  iscandidate: boolean;
   constructor(private httpService: HttpgeneralService,public toasterService:ToastService) {
-    this.isemployer = true;
-    this.iscandidate = false;
+
   }
 
   ngOnInit(): void {
@@ -35,8 +31,8 @@ export class SignUpComponent implements OnInit {
       LastName: user.LastName,
       Email: user.Email,
       Password: user.Password,
-      isEmployer:this.isemployer,
-      isCandidate:this.iscandidate
+      isEmployer:false,
+      isCandidate:false
     }
     if(user.isEmployer=="employer"){
       postBody.isEmployer=true;

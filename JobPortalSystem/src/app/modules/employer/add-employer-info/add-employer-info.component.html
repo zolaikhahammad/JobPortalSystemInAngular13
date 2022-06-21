@@ -4,9 +4,16 @@
             <input type="hidden" formControlName="userId">
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="inputEmail4">Company Name <span class="error-msg">*</span></label>
+                    <label for="inputEmail4">Company Name <span class="error-msg">*</span></label> 
                     <input type="text" class="form-control" id="inputEmail4" placeholder=""
                         formControlName="companyName">
+                        <!-- <div class="example-container">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Company Name</mat-label>
+                              <input matInput placeholder="pat@example.com" formControlName="companyName" required>
+                              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> 
+                            </mat-form-field> 
+                          </div>-->
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">Group of Companies <span class="error-msg">*</span></label>
@@ -27,17 +34,22 @@
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">CEO CNIC <span class="error-msg">*</span></label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder=""
-                        formControlName="ceoCnic">
+                        formControlName="ceoCnic" maxlength="13" pattern="^[0-9]{5}-[0-9]{7}-[0-9]$">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">CNIC Issuance Date <span class="error-msg">*</span></label>
-                    <mat-form-field class="form-control example-full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
+                    <input class="form-control"  #cnicIssuanceDate="ngbDatepicker" placeholder="yyyy-mm-dd"  formControlName="cnicIssuanceDate" ngbDatepicker >
+             <button class="btn btn-outline-secondary calendar" (click)="this.cnicIssuanceDate.toggle()" type="button"></button>
+                    <!-- <label for="inputPassword4">CNIC Issuance Date <span class="error-msg">*</span></label>
+                    <ngb-datepicker formControlName="cnicIssuanceDate" (navigate)="date" class="form-control"></ngb-datepicker> -->
+
+                     <!-- <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>CNIC Issuance Date</mat-label>
                         <input matInput  [matDatepicker]="picker">
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
+                      </mat-form-field>  -->
                 </div>
             </div>
             <div class="row">
