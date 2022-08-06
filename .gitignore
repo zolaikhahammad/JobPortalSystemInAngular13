@@ -4,3 +4,4 @@ JobPortalSystem/.browserslistrc
 JobPortalSystem/.editorconfig
 JobPortalSystem/node_modules/.bin/
 *.json
+*.json
